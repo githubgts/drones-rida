@@ -39,7 +39,7 @@
     Example : 
         {
             "name" : "medicationone",
-            "code" : "036gu",
+            "code" : "ab01",
             "weight_limit" : "20"
         }
 ```
@@ -54,8 +54,8 @@
         {
             "drone_serial_no":"SN1",
             "med_code": {
-                "0" : "036gu",
-                "1" : "037gu"
+                "0" : "ab01",
+                "1" : "ab02"
             }
         }
 ```
@@ -70,8 +70,8 @@
 
     Example = 
     [
-        {"name":"medicationone","code":"036gu","weight_limit":20},
-        {"name":"medicationtwo","code":"037gu","weight_limit":30}
+        {"name":"medicationone","code":"ab01","weight_limit":20},
+        {"name":"medicationtwo","code":"ab01","weight_limit":30}
     ]
     
 ## Checking available drones for loading
@@ -86,14 +86,14 @@
         {
             serial_no: 'SN1',
             model: 'Lightweight',
-            weight_limit: 20,
+            weight_limit: 500,
             battery_capacity: 100,
-            state: 'IDLE'
+            state: 'LOADING'
         },
         {
-            serial_no: 'SN2',
+            serial_no: 'SN3',
             model: 'Lightweight',
-            weight_limit: 20,
+            weight_limit: 500,
             battery_capacity: 100,
             state: 'LOADING'
         }
