@@ -24,3 +24,19 @@ exports.create = (req, res) => {
         else res.send(data);
     });
 };
+exports.findWeightLimitBycode = (req, res) => {
+    Medication.findWeightLimitBycode(req.params.code, (err, data) => {
+        if (err) {
+            if (err.message === "not_found") {
+                res.status(404).send({
+                    message: `Weight limit not found of medication serial no : ${req.params.code}.`
+                });
+            } else {
+                res.status(500).send({
+                    message: "Error retrieving weight limit of medication serial no : " + req.params.code
+                });
+            }
+        } else res.send(data);
+    });
+};
+

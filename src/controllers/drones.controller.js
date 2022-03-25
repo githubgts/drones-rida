@@ -76,6 +76,21 @@ exports.findBatterycapacityByserialno = (req, res) => {
         } else res.send(data);
     });
 };
+exports.findWeightLimitByserialno = (req, res) => {
+    Drones.findWeightLimitByserialno(req.params.serial_no, (err, data) => {
+        if (err) {
+            if (err.message === "not_found") {
+                res.status(404).send({
+                    message: `Weight limit not found of drone serial no : ${req.params.serial_no}.`
+                });
+            } else {
+                res.status(500).send({
+                    message: "Error retrieving weight limit of drone serial no : " + req.params.serial_no
+                });
+            }
+        } else res.send(data);
+    });
+};
 
 exports.updateById = (req, res) => {
  

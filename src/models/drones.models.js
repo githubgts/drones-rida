@@ -52,6 +52,22 @@ Drones.findBatterycapacityByserialno = (serial_no, result) => {
         result({ message: "Battery Level not found" }, null);
     });
 };
+Drones.findWeightLimitByserialno = (serial_no, result) => {
+    sql.query(`SELECT weight_limit FROM drones WHERE serial_no = '${serial_no}'`, (err, res) => {
+        console.log(err);
+        if (err) {
+            console.log("error: ", err);
+            return result(err, null);
+        }
+
+        if (res.length) {
+            console.log("Drones: ", res[0]);
+            return result(null, res[0]);
+        }
+        
+        result({ message: "Weight Limit not found" }, null);
+    });
+};
 
 // Drones.updateById = (drones, result) => {
 //     sql.query(

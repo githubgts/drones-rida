@@ -31,4 +31,36 @@ Medication.create = (newMedication, result) => {
     });
 };
 
+Medication.findWeightLimitBycode = (code, result) => {
+    code = Object.values(code).join(',');
+
+    
+    let query = "SELECT weight_limit FROM medication WHERE ";
+    if (code.includes(",")) {  
+        let codes = code.split(",");
+        codes.map((o,i)=>{
+            query += "code = '"+o+"' ";
+            if(i==codes.length -1){
+                query += "";   
+            }
+            else query += "OR ";
+        }) 
+    } else{
+        query += "code ='%"+code+"%' ";
+    }
+    sql.query(query, (err, res) => {
+        console.log(query )
+        if (err) {
+            console.log("error: ", err);
+            return result(err, null);
+        }
+
+        if (res.length) {
+            console.log("Medication: ", res);
+            return result(null, res);
+        }
+        
+        result({ message: "Weight Limit not found" }, null);
+    });
+};
 module.exports = Medication;
