@@ -1,6 +1,0 @@
-http://localhost:3000/medication/create
-
-http://localhost:3000/drones/available-loading
-http://localhost:3000/drones/create
-http://localhost:3000/drones/battery-capacity/:serial_no
-
